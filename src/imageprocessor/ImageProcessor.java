@@ -80,36 +80,12 @@ public class ImageProcessor extends javax.swing.JFrame {
         grayButton.setText("Grayscale");
         exitButton.setText("Exit");
         
-        //The following blocks add functionality to the buttons. 
-        showButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                showButtonAction(evt);
-            }
-        });
-        
-        sharpButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SharpButtonAction(evt);
-            }
-        });
-        
-        blurButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                blurButtonAction(evt);
-            }
-        });
-        
-        grayButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                grayButtonAction(evt);
-            }
-        });
-        
-        exitButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitButtonAction(evt);
-            }
-        });
+        //The following block adds functionality to the buttons. 
+        showButton.addActionListener(this::showButtonAction);        
+        sharpButton.addActionListener(this::SharpButtonAction);        
+        blurButton.addActionListener(this::blurButtonAction);        
+        grayButton.addActionListener(this::grayButtonAction);        
+        exitButton.addActionListener(this::exitButtonAction);
         
         //Define the layout of the GUI. 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -29,16 +29,16 @@ public class ImageProcessor extends javax.swing.JFrame {
     private JTextField textField2;
     private JTextField textField3;
     private JTextField textField4;
-    private JButton button1;
-    private JButton button2;
-    private JButton button3;
-    private JButton button4;
-    private JButton button5;
+    private JButton showButton;
+    private JButton sharpButton;
+    private JButton blurButton;
+    private JButton grayButton;
+    private JButton exitButton;
     
     //Declare further variables
-    private String source = "C:/Users/Carlo/Documents/NetBeansProjects/BroncodeTraineeship/src/broncodetraineeship/HistologyImage.jpg";
-    private String destinationText = "Destination";
-    private String destination = "C:/Users/Carlo/Pictures/";
+    private final String source = "C:/Users/Carlo/Documents/NetBeansProjects/BroncodeTraineeship/src/broncodetraineeship/HistologyImage.jpg";
+    private final String destinationText = "Destination";
+    private final String destination = "C:/Users/Carlo/Pictures/";
     
     public ImageProcessor() {
         //This method creates the GUI.
@@ -55,11 +55,11 @@ public class ImageProcessor extends javax.swing.JFrame {
         textField2 = new javax.swing.JTextField();
         textField3 = new javax.swing.JTextField();
         textField4 = new javax.swing.JTextField();
-        button1 = new javax.swing.JButton();
-        button2 = new javax.swing.JButton();
-        button3 = new javax.swing.JButton();
-        button4 = new javax.swing.JButton();
-        button5 = new javax.swing.JButton();
+        showButton = new javax.swing.JButton();
+        sharpButton = new javax.swing.JButton();
+        blurButton = new javax.swing.JButton();
+        grayButton = new javax.swing.JButton();
+        exitButton = new javax.swing.JButton();
         
         //Stop program after closing the GUI. 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -74,48 +74,47 @@ public class ImageProcessor extends javax.swing.JFrame {
         textField2.setText(destination + "SharpExample.png");
         textField3.setText(destination + "BlurExample.png");
         textField4.setText(destination + "GrayExample.png");
-        button1.setText("Show");
-        button2.setText("Sharpen");
-        button3.setText("Blur");
-        button4.setText("Grayscale");
-        button5.setText("Exit");
+        showButton.setText("Show");
+        sharpButton.setText("Sharpen");
+        blurButton.setText("Blur");
+        grayButton.setText("Grayscale");
+        exitButton.setText("Exit");
         
         //The following blocks add functionality to the buttons. 
-        button1.addActionListener(new java.awt.event.ActionListener() {
+        showButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button1Action(evt);
+                showButtonAction(evt);
             }
         });
         
-        button2.addActionListener(new java.awt.event.ActionListener() {
+        sharpButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button2Action(evt);
+                SharpButtonAction(evt);
             }
         });
         
-        button3.addActionListener(new java.awt.event.ActionListener() {
+        blurButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button3Action(evt);
+                blurButtonAction(evt);
             }
         });
         
-        button4.addActionListener(new java.awt.event.ActionListener() {
+        grayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button4Action(evt);
+                grayButtonAction(evt);
             }
         });
         
-        button5.addActionListener(new java.awt.event.ActionListener() {
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                button5Action(evt);
+                exitButtonAction(evt);
             }
         });
         
         //Define the layout of the GUI. 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,7 +124,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addComponent(textField1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button1, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(showButton, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
             )
             .addGroup(layout.createSequentialGroup()
@@ -137,7 +136,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addComponent(textField2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button2, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(sharpButton, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
             )
             .addGroup(layout.createSequentialGroup()
@@ -149,7 +148,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addComponent(textField3, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button3, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(blurButton, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
             )
             .addGroup(layout.createSequentialGroup()
@@ -161,18 +160,17 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addComponent(textField4, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(button4, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(grayButton, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
             )
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(button5, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.DEFAULT_SIZE, 187, Short.MAX_VALUE)
                 )
             )
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -180,7 +178,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addGap(5)
                     .addComponent(textField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
-                    .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(showButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
                 )
             .addGap(18, 18, 18)
@@ -189,7 +187,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addGap(5)
                     .addComponent(textField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
-                    .addComponent(button2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sharpButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
                 )
             .addGap(18, 18, 18)
@@ -198,7 +196,7 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addGap(5)
                     .addComponent(textField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
-                    .addComponent(button3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(blurButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
                 )
             .addGap(18, 18, 18)
@@ -207,12 +205,12 @@ public class ImageProcessor extends javax.swing.JFrame {
                     .addGap(5)
                     .addComponent(textField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
-                    .addComponent(button4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(grayButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
                 )
             .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(button5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(5)
                 )
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -236,7 +234,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         return image;
     }
     
-    private void button1Action(java.awt.event.ActionEvent evt) {
+    private void showButtonAction(java.awt.event.ActionEvent evt) {
         //Load image. 
         BufferedImage image = loadImage();
         
@@ -253,7 +251,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         frame1.setVisible(true);
     }
     
-    private void button2Action(java.awt.event.ActionEvent evt) {
+    private void SharpButtonAction(java.awt.event.ActionEvent evt) {
         //Load the source image. 
         BufferedImage image = loadImage();
         
@@ -283,7 +281,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         }
     }
     
-    private void button3Action(java.awt.event.ActionEvent evt) {
+    private void blurButtonAction(java.awt.event.ActionEvent evt) {
         //Load the source image. 
         BufferedImage image = loadImage();
         
@@ -313,7 +311,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         }
     }
     
-    private void button4Action(java.awt.event.ActionEvent evt) {
+    private void grayButtonAction(java.awt.event.ActionEvent evt) {
         //Load the source image. 
         BufferedImage image = loadImage();
         
@@ -343,7 +341,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         }
     }
     
-    private void button5Action(java.awt.event.ActionEvent evt) {
+    private void exitButtonAction(java.awt.event.ActionEvent evt) {
         //Stop the program and close the GUI when this button is pressed. 
         System.exit(0);
     }

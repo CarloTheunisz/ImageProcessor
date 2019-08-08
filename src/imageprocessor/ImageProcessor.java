@@ -210,6 +210,13 @@ public class ImageProcessor extends javax.swing.JFrame {
         return image;
     }
     
+    private void showImage(JFrame frame, JLabel imageLabel, int w, int h) {
+        frame.getContentPane().add(imageLabel, BorderLayout.CENTER);
+        frame.setSize(w, h);
+        pack();
+        frame.setVisible(true);
+    }
+    
     private void saveImage(JTextField textField, BufferedImage image) {
         //This method saves the new image at the location specified in the textfield.
         File imOut = new File(textField.getText());
@@ -231,10 +238,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         //Show the loaded image. 
         JFrame frame1 = new JFrame();
         JLabel imageLabel1 = new javax.swing.JLabel(new ImageIcon(image));
-        frame1.getContentPane().add(imageLabel1, BorderLayout.CENTER);
-        frame1.setSize(w, h);
-        pack();
-        frame1.setVisible(true);
+        showImage(frame1, imageLabel1, w, h);
     }
     
     private void SharpButtonAction(java.awt.event.ActionEvent evt) {
@@ -253,10 +257,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         //Show the new image. 
         JFrame frame2 = new JFrame();
         JLabel imageLabel2 = new javax.swing.JLabel(new ImageIcon(sharpImage));
-        frame2.getContentPane().add(imageLabel2, BorderLayout.CENTER);
-        frame2.setSize(w, h);
-        pack();
-        frame2.setVisible(true);
+        showImage(frame2, imageLabel2, w, h);
         
         //Save the image at the location given by the second text field. 
         saveImage(textField2, sharpImage);
@@ -278,10 +279,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         //Show the new image. 
         JFrame frame3 = new JFrame();
         JLabel imageLabel3 = new javax.swing.JLabel(new ImageIcon(blurImage));
-        frame3.getContentPane().add(imageLabel3, BorderLayout.CENTER);
-        frame3.setSize(w, h);
-        pack();
-        frame3.setVisible(true);
+        showImage(frame3, imageLabel3, w, h);
         
         //Save the image at the location given by the third text field. 
         saveImage(textField3, blurImage);
@@ -303,10 +301,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         //Show the new image. 
         JFrame frame4 = new JFrame();
         JLabel imageLabel4 = new javax.swing.JLabel(new ImageIcon(grayImage));
-        frame4.getContentPane().add(imageLabel4, BorderLayout.CENTER);
-        frame4.setSize(w, h);
-        pack();
-        frame4.setVisible(true);
+        showImage(frame4, imageLabel4, w, h);
         
         //Save the image at the location given by the fourth text field. 
         saveImage(textField4, grayImage);

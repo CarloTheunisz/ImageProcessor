@@ -210,6 +210,16 @@ public class ImageProcessor extends javax.swing.JFrame {
         return image;
     }
     
+    private void saveImage(JTextField textField, BufferedImage image) {
+        //This method saves the new image at the location specified in the textfield.
+        File imOut = new File(textField.getText());
+        try {
+            ImageIO.write(image, "png", imOut);
+        } catch (IOException ex) {
+            Logger.getLogger(ImageProcessor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     private void showButtonAction(java.awt.event.ActionEvent evt) {
         //Load image. 
         BufferedImage image = loadImage();
@@ -249,12 +259,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         frame2.setVisible(true);
         
         //Save the image at the location given by the second text field. 
-        File imOut = new File(textField2.getText());
-        try {
-            ImageIO.write(sharpImage, "png", imOut);
-        } catch (IOException ex) {
-            Logger.getLogger(ImageProcessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        saveImage(textField2, sharpImage);
     }
     
     private void blurButtonAction(java.awt.event.ActionEvent evt) {
@@ -279,12 +284,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         frame3.setVisible(true);
         
         //Save the image at the location given by the third text field. 
-        File imOut = new File(textField3.getText());
-        try {
-            ImageIO.write(blurImage, "png", imOut);
-        } catch (IOException ex) {
-            Logger.getLogger(ImageProcessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        saveImage(textField3, blurImage);
     }
     
     private void grayButtonAction(java.awt.event.ActionEvent evt) {
@@ -309,12 +309,7 @@ public class ImageProcessor extends javax.swing.JFrame {
         frame4.setVisible(true);
         
         //Save the image at the location given by the fourth text field. 
-        File imOut = new File(textField4.getText());
-        try {
-            ImageIO.write(grayImage, "png", imOut);
-        } catch (IOException ex) {
-            Logger.getLogger(ImageProcessor.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        saveImage(textField4, grayImage);
     }
     
     private void exitButtonAction(java.awt.event.ActionEvent evt) {
